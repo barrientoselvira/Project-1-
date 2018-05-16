@@ -1,0 +1,101 @@
+
+/* Navbar */
+.top-nav {
+    height: 70px;
+    padding: 20px;
+}
+
+a {
+    font-size: 14px;
+    color: #665050;
+}
+
+a:hover {
+    font-size: 16px;
+    color: black;
+    text-decoration: line-through;
+}
+
+a:active {
+    font-size: 12px;
+}
+
+/* Header */
+#camping-background {
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    position: absolute;
+} 
+
+.header { 
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+} 
+
+#title {
+    position: relative;
+    color: #393333;
+    text-align: center;
+    font-size: 115px;
+    margin-top: 150px;
+}
+
+#lead-in {
+    margin-top:70px;
+    text-align: center;
+    color: white;
+    position: relative;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: lighter;
+
+}
+
+
+/* About */
+.icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 40px;
+
+}
+
+h4{
+    padding: 40px;
+    margin-bottom: 70px;
+}
+
+.steps {
+    margin-bottom: 40px;
+}
+
+/* JavaScript */
+
+#ready {
+    align-content: center;
+}
+
+.btn-one{
+    align-content: center;
+}
+
+
+/* Footer */
+.about-container{
+    color: black;
+    margin-top: 400px;
+    text-align: center;
+}
+
+
+/* Footer */
+.footer{
+    color: black; 
+    width: 100%;
+}
+
+
