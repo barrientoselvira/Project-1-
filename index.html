@@ -19,16 +19,19 @@
     <!--  Navigation Bar  -->
     <div class="container">
 
+        <div id="top"></div>
+
+        <nav class="site-navigation page-navigation">
             <div class="top-nav">
                  <ul class="nav justify-content-end">
                  <li class="nav-item">
-                  <a class="nav-link active" href="#">Home</a>
+                  <a class="nav-link active home-click" href="#home">Home</a>
                  </li>
                  <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
+                  <a class="nav-link about-click" href="#about">About</a>
+                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Get Started</a>
+                  <a class="nav-link getstarted-click" href="#getstarted">Get Started</a>
                 </li>
                  </ul>
              </div>
@@ -36,13 +39,14 @@
  <!--  Header  -->
              <div class="header">
                     <img id="camping-background" src="assets/images/people-2561455_1280.jpg">
-                    <h1 id="title">ALTITUDE</h1>
+                    <div class="col-sm">
+                    <h1 id="title">ALTiiTUDE</h1>
                     <h3 id ="lead-in">Searching for outdoor activies has never been easier.</h3>
-             </div>
+                    </div>
+            </div>
 
 <!-- About -->
-             <div class="about-container">
-            
+        <div class="about-container"> 
             <h4>Wondering how it works?</h4>
                 <div class="row">
                     <div class="col-sm">
@@ -60,24 +64,28 @@
 
                     </div>
                 </div>
-            </div>
+         </div>
 
 
 <!-- Questions & List -->
-            <div class="questions">
+            <div class="questions-container">
                 <div class="row">
-                    <p id="ready">Ready to get  started?</p>
+                    <div class="col-sm-4"></div>
+                     <p id="ready">Ready for your next adventure?</p>
+                     </div>
                 </div>
-                <button type="button" class="btn btn-outline-secondary btn-one">Start</button>
-
+                <div class="row">
+                        <div class="col-sm-4"></div>
+                             <button type="button" class="btn btn-outline-secondary btn-begin">Begin</button>
+                             <div class=".stuff"></div>
+                        <div class="col-sm-2"></div>
+                </div>
             </div>
 
 
 
 <!-- Footer -->
-            <div class="footer">
-                <p>copyright Altitude 2018</p>
-            </div>
+            
 
     </div>
     <script src="assets/javascript/app.js"></script>
