@@ -7,13 +7,9 @@ $(document).ready(function() {
 
     var questionsArray = [
         {
-        question: "What state were you wanting to visit?", 
+        question: "What state were you wanting to vist?", 
         answers: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS','MO', 'MT', 'NE', 'NV', 'NH', 'NJ','NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI','WY'  ]
     }, 
-    {
-        question: "What terrain are you looking for?",
-        answers: ['desert', 'mountain', 'forest',]
-        },
         {
         question: "What activity would you like to do?",
         answers: ['hiking', 'swimming', 'rock climbing', 'camping', 'fishing', 'star gazing'], 
@@ -26,6 +22,10 @@ $(document).ready(function() {
         question: "Are you traveling solo or with a group of people?",
         answers: ['solo', 'group of people'],
         },
+        {
+        question: "What type of terrain are you looking for?",
+        answers: ['desert', 'mountain', 'forest'],
+        }
 ];
 
     //FUNCTIONS
@@ -35,7 +35,6 @@ $(document).ready(function() {
 
     $(".btn-begin").click(function() {
         $(this).hide();
-        $("#ready").hide();
         console.log("clicked")
         questionsStart();
     });
@@ -140,4 +139,10 @@ $(document).ready(function() {
 
   
 
-    
+
+
+
+
+
+
+// });
