@@ -21,8 +21,11 @@ $(document).ready(function() {
         {
         question: "Are you traveling solo or with a group of people?",
         answers: ['solo', 'group of people'],
+        },
+        {
+        question: "What type of terrain are you looking for?",
+        answers: ['desert', 'mountain', 'forest'],
         }
-
 ];
 
     //FUNCTIONS
@@ -37,36 +40,78 @@ $(document).ready(function() {
     });
 
     function questionsStart()
-   {
+    {
        //TEST//Create div to add the questions to
-   var randomQuestion = Math.floor(Math.random()*questionsArray.length);
-   var questions = questionsArray[randomQuestion];
-   questionsArray[randomQuestion] = questionsArray[0];
+    var randomQuestion;
+    var questions = [];
+    var questionDiv;
+    var answeredQuestionsArray = [];
+    var answerDiv;
+    var answerArray = [];
+    var userChoice;
+    var answerOptionDiv;
+    var addAnswer;
 
+    pickQuestion();
+    
+    console.log(answerArray);
+    console.log(questions.question);
 
+    //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
+    $("body").on("click", ".userChoice", function(){
+        console.log(this);
+        userChoice = $(this).attr("answeranswer");
+        console.log("USER CHOICE IS: " + userChoice);
+        $(".stuff").empty();
+        pickQuestion();
+    })
 
-   var questionDiv = $("<div>");
-   questionDiv.addClass("questionClass");
-   questionDiv.attr('theQuestions', questions.question);
-   questionDiv.append(questions.question);
-   $(".stuff").append(questionDiv);
+    //FUNCTION TO SHOW NEXT QUESTION
+    // function nextQuestion() {
+    //     if (answeredQuestionsArray !== 4) {
+    //         pickQuestion();
+    //     } else(alert("YOU ARE DONE WITH QUESTIONS"));
+    // }
 
-   var answerDiv = $("<div>");
-   var answerArray = [];
-   $(".stuff").append(answerDiv);
-   for(var i = 0; i < questions.answers.length; i++){
-       //Add Answer Div to HTML
-       var answerOptionDiv = $("<div>");
-    //    var addAnswer = $("<button>);
-       answerOptionDiv.addClass("answerOptionDiv");
-       answerOptionDiv.attr("answeranswer", questions.answers[i]);
-       console.log(questions.answers[i]);
-       answerOptionDiv.append(questions.answers[i]);
-       answerArray.push(questions.answers[i]);
-       $(answerDiv).append(questions.answers[i]);
-   }    
-   console.log(answerArray);
-   console.log(questions.question);
+    //FUNCTION TO PICK A QUESTION
+    function pickQuestion() {
+        console.log("THIS IS # ANSWERED: " + answeredQuestionsArray.length);
+        if (answeredQuestionsArray.length !== 5) {
+        randomQuestion = Math.floor(Math.random()*questionsArray.length);
+        questions = questionsArray[randomQuestion];
+        questionsArray[randomQuestion] = questionsArray[0];
+        answeredQuestionsArray.push(questions.question);
+        questionsArray.shift()
+        
+        console.log("QUESTIONS ARRAY: " + questionsArray);
+        console.log("ANSWERED QUESTIONS: " + answeredQuestionsArray);
+
+        questionDiv = $("<div>");
+        questionDiv.addClass("questionClass");
+        questionDiv.attr('theQuestions', questions.question);
+        questionDiv.append(questions.question);
+        $(".stuff").append(questionDiv);
+        showAnswers();
+        } else(alert("YOU ARE DONE WITH QUESTIONS"));
+    }
+    
+
+    function showAnswers() {
+        answerDiv = $("<div>");
+        $(".stuff").append(answerDiv);
+        for(var i = 0; i < questions.answers.length; i++){
+            //Add Answer Div to HTML
+            answerOptionDiv = $("<div class='row answerOptionDiv'>");
+            addAnswer = $("<div class='col-sm userChoice' <button>").text(questions.answers[i]);
+            addAnswer.attr("answeranswer", questions.answers[i]);
+            console.log(questions.answers[i]);
+            answerArray.push(questions.answers[i]);
+            console.log(addAnswer);
+            $(answerOptionDiv).append(addAnswer);
+            $(".stuff").append(answerOptionDiv);
+        }    
+        // nextQuestion();
+    }
 
         // .append(="<img src=" + );
         }
