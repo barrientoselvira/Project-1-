@@ -28,7 +28,43 @@ $(document).ready(function() {
         }
 ];
 
-    //FUNCTIONS
+    //MAIN
+    //=================================================
+
+    $(".btn-begin").click(function() {
+        $(this).hide();
+        console.log("clicked")
+        questionsStart();
+    });
+
+    function questionsStart()
+    {
+       //TEST//Create div to add the questions to
+    var randomQuestion;
+    var questions = [];
+    var questionDiv;
+    var answeredQuestionsArray = [];
+    var answerDiv;
+    var answerArray = [];
+    var userChoice;
+    var answerOptionDiv;
+    var addAnswer;
+
+    pickQuestion();
+    
+    console.log(answerArray);
+    console.log(questions.question);
+
+    //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
+    $("body").on("click", ".userChoice", function(){
+        console.log(this);
+        userChoice = $(this).attr("answeranswer");
+        console.log("USER CHOICE IS: " + userChoice);
+        $(".stuff").empty();
+        pickQuestion();
+    })
+
+     //FUNCTIONS
     //=================================================
 
     //FUNCTION TO PICK A QUESTION
@@ -69,42 +105,6 @@ $(document).ready(function() {
             $(".stuff").append(answerOptionDiv);
         }    
     }
-
-    //MAIN
-    //=================================================
-
-    $(".btn-begin").click(function() {
-        $(this).hide();
-        console.log("clicked")
-        questionsStart();
-    });
-
-    function questionsStart()
-    {
-       //TEST//Create div to add the questions to
-    var randomQuestion;
-    var questions = [];
-    var questionDiv;
-    var answeredQuestionsArray = [];
-    var answerDiv;
-    var answerArray = [];
-    var userChoice;
-    var answerOptionDiv;
-    var addAnswer;
-
-    pickQuestion();
-    
-    console.log(answerArray);
-    console.log(questions.question);
-
-    //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
-    $("body").on("click", ".userChoice", function(){
-        console.log(this);
-        userChoice = $(this).attr("answeranswer");
-        console.log("USER CHOICE IS: " + userChoice);
-        $(".stuff").empty();
-        pickQuestion();
-    })
 
         // .append(="<img src=" + );
         }
