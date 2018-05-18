@@ -31,48 +31,6 @@ $(document).ready(function() {
     //FUNCTIONS
     //=================================================
 
-    //MAIN
-
-    $(".btn-begin").click(function() {
-        $(this).hide();
-        console.log("clicked")
-        questionsStart();
-    });
-
-    function questionsStart()
-    {
-       //TEST//Create div to add the questions to
-    var randomQuestion;
-    var questions = [];
-    var questionDiv;
-    var answeredQuestionsArray = [];
-    var answerDiv;
-    var answerArray = [];
-    var userChoice;
-    var answerOptionDiv;
-    var addAnswer;
-
-    pickQuestion();
-    
-    console.log(answerArray);
-    console.log(questions.question);
-
-    //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
-    $("body").on("click", ".userChoice", function(){
-        console.log(this);
-        userChoice = $(this).attr("answeranswer");
-        console.log("USER CHOICE IS: " + userChoice);
-        $(".stuff").empty();
-        pickQuestion();
-    })
-
-    //FUNCTION TO SHOW NEXT QUESTION
-    // function nextQuestion() {
-    //     if (answeredQuestionsArray !== 4) {
-    //         pickQuestion();
-    //     } else(alert("YOU ARE DONE WITH QUESTIONS"));
-    // }
-
     //FUNCTION TO PICK A QUESTION
     function pickQuestion() {
         console.log("THIS IS # ANSWERED: " + answeredQuestionsArray.length);
@@ -110,8 +68,43 @@ $(document).ready(function() {
             $(answerOptionDiv).append(addAnswer);
             $(".stuff").append(answerOptionDiv);
         }    
-        // nextQuestion();
     }
+
+    //MAIN
+    //=================================================
+
+    $(".btn-begin").click(function() {
+        $(this).hide();
+        console.log("clicked")
+        questionsStart();
+    });
+
+    function questionsStart()
+    {
+       //TEST//Create div to add the questions to
+    var randomQuestion;
+    var questions = [];
+    var questionDiv;
+    var answeredQuestionsArray = [];
+    var answerDiv;
+    var answerArray = [];
+    var userChoice;
+    var answerOptionDiv;
+    var addAnswer;
+
+    pickQuestion();
+    
+    console.log(answerArray);
+    console.log(questions.question);
+
+    //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
+    $("body").on("click", ".userChoice", function(){
+        console.log(this);
+        userChoice = $(this).attr("answeranswer");
+        console.log("USER CHOICE IS: " + userChoice);
+        $(".stuff").empty();
+        pickQuestion();
+    })
 
         // .append(="<img src=" + );
         }
@@ -137,12 +130,3 @@ $(document).ready(function() {
         }, 800);
     })
 
-  
-
-
-
-
-
-
-
-// });
