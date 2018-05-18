@@ -105,6 +105,22 @@ h4{
 }
 
 /*JavaScript */
+/*Question Div */
+ .questionClass {
+    color: #4D504C;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 150px;
+    font-weight: 400;
+ }
+
+ .answerOptionDiv {
+    color: #4D504C;
+    font-size: 32px;
+    margin-top: 150px;
+    font-weight: 400;
+
+ }
 
 
 
