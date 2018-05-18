@@ -56,7 +56,6 @@ $(document).ready(function() {
    $(".stuff").append(questionDiv);
 
    var answerDiv = $("<div>");
-   var answerArray = [];
    $(".stuff").append(answerDiv);
    for(var i = 0; i < questionsArray.length; i++){
        //Add Answer Div to HTML
@@ -64,10 +63,9 @@ $(document).ready(function() {
        answerOptionDiv.addClass("answerOptionDiv");
        answerOptionDiv.attr("answeranswer", [i]);
        answerOptionDiv.append(questions.answers[i]);
-       answerArray.push(questions.answers[i]);
-    //    $(answerDiv).append(questions.answers[i]);
+       answerArray.append(questions.answers);
+       $(answerDiv).append(questions.answers[i]);
    }    
-   $(answerDiv).append(answerArray);
    console.log(questions.answers[i]);
    console.log(questions.question);
 
