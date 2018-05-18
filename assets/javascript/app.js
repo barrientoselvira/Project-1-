@@ -37,34 +37,37 @@ $(document).ready(function() {
     });
 
     function questionsStart()
-    {
-        //TEST//Create div to add the questions to 
-    var randomQuestion = [Math.floor(Math.random()*questionsArray.lenth)];
-    var questions = questionsArray[randomQuestion];
-    console.log(questionsArray);
+   {
+       //TEST//Create div to add the questions to
+   var randomQuestion = Math.floor(Math.random()*questionsArray.length);
+   var questions = questionsArray[randomQuestion];
+   questionsArray[randomQuestion] = questionsArray[0];
 
-     
 
- 
-    var questionDiv = $("<div>");
-    questionDiv.addClass("questionClass");
-    questionDiv.attr('theQuestions', questionsArray.questions);
-    questionDiv.append(questionsArray.question);
-    $(".stuff").append(questionDiv);
-    console.log(questionsArray.questions);
 
-    var answerDiv = $("<div>");
-    $(".stuff").append(answerDiv);
-    for(var i = 0; i < questionsArray.length; i++){
-        //Add Answer Div to HTML
-        var answerOptionDiv = $("<div>");
-        answerOptionDiv.addClass("answerOptionDiv");
-        answerOptionDiv.attr("answeranswer", [i]);
-        answerOptionDiv.append(questionsArray[i].question);
-        $(answerDiv).append(answerOptionDiv);
-    }
+   var questionDiv = $("<div>");
+   questionDiv.addClass("questionClass");
+   questionDiv.attr('theQuestions', questions.question);
+   questionDiv.append(questions.question);
+   $(".stuff").append(questionDiv);
 
-        
+   var answerDiv = $("<div>");
+   var answerArray = [];
+   $(".stuff").append(answerDiv);
+   for(var i = 0; i < questions.answers.length; i++){
+       //Add Answer Div to HTML
+       var answerOptionDiv = $("<div>");
+    //    var addAnswer = $("<button>);
+       answerOptionDiv.addClass("answerOptionDiv");
+       answerOptionDiv.attr("answeranswer", questions.answers[i]);
+       console.log(questions.answers[i]);
+       answerOptionDiv.append(questions.answers[i]);
+       answerArray.push(questions.answers[i]);
+       $(answerDiv).append(questions.answers[i]);
+   }    
+   console.log(answerArray);
+   console.log(questions.question);
+
         // .append(="<img src=" + );
         }
     })
