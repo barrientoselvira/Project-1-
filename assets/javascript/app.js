@@ -56,17 +56,20 @@ $(document).ready(function() {
    $(".stuff").append(questionDiv);
 
    var answerDiv = $("<div>");
+   var answerArray = [];
    $(".stuff").append(answerDiv);
-   for(var i = 0; i < questionsArray.length; i++){
+   for(var i = 0; i < questions.answers.length; i++){
        //Add Answer Div to HTML
        var answerOptionDiv = $("<div>");
+    //    var addAnswer = $("<button>);
        answerOptionDiv.addClass("answerOptionDiv");
-       answerOptionDiv.attr("answeranswer", [i]);
+       answerOptionDiv.attr("answeranswer", questions.answers[i]);
+       console.log(questions.answers[i]);
        answerOptionDiv.append(questions.answers[i]);
-       answerArray.append(questions.answers);
+       answerArray.push(questions.answers[i]);
        $(answerDiv).append(questions.answers[i]);
    }    
-   console.log(questions.answers[i]);
+   console.log(answerArray);
    console.log(questions.question);
 
         // .append(="<img src=" + );
