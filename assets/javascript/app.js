@@ -1,9 +1,28 @@
 $(document).ready(function() {
     console.log("ready");
 
-
     //GLOBAL VARIABLES
     //==================================================
+    var config = {
+        apiKey: "AIzaSyD5T61zgEJdlZ4FGdSAE-4yXP6ysH6TxmI",
+        authDomain: "project-1-b1b3a.firebaseapp.com",
+        databaseURL: "https://project-1-b1b3a.firebaseio.com",
+        projectId: "project-1-b1b3a",
+        storageBucket: "",
+        messagingSenderId: "922217147967"
+      };
+      firebase.initializeApp(config);
+    var randomQuestion;
+    var questions = [];
+    var questionDiv;
+    var answeredQuestionsArray = [];
+    var answerDiv;
+    var answerArray = [];
+    var userChoice;
+    var userAnswers = [];
+    var answerOptionDiv;
+    var addAnswer;
+    var database = firebase.database();
 
     var questionsArray = [
         {
@@ -37,20 +56,7 @@ $(document).ready(function() {
         questionsStart();
     });
 
-    function questionsStart()
-    {
-       //TEST//Create div to add the questions to
-    var randomQuestion;
-    var questions = [];
-    var questionDiv;
-    var answeredQuestionsArray = [];
-    var answerDiv;
-    var answerArray = [];
-    var userChoice;
-    var userAnswers = [];
-    var answerOptionDiv;
-    var addAnswer;
-    
+    function questionsStart() {
 
     pickQuestion();
     
@@ -63,9 +69,10 @@ $(document).ready(function() {
         userChoice = $(this).attr("answeranswer");
         console.log("USER CHOICE IS: " + userChoice);
         userAnswers.push(userChoice);
-        console.log("Here is the users answers: " + userAnswers);
+        console.log("Here are the users answers: " + userAnswers);
         $(".stuff").empty();
         pickQuestion();
+
     })
 
      //FUNCTIONS
@@ -90,7 +97,10 @@ $(document).ready(function() {
         questionDiv.append(questions.question);
         $(".stuff").append(questionDiv);
         showAnswers();
-        } else(alert("YOU ARE DONE WITH QUESTIONS"));
+        } else {
+            console.log("DONE WITH QUESTIONS");
+            showResponses();
+        }
     }
     
 
@@ -110,7 +120,12 @@ $(document).ready(function() {
         }    
     }
 
-        // .append(="<img src=" + );
+    function showResponses() {
+        database.ref().push({
+            answers: userAnswers
+        })
+    }
+
         }
     })
 
