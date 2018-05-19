@@ -47,8 +47,10 @@ $(document).ready(function() {
     var answerDiv;
     var answerArray = [];
     var userChoice;
+    var userAnswers = [];
     var answerOptionDiv;
     var addAnswer;
+    
 
     pickQuestion();
     
@@ -60,6 +62,8 @@ $(document).ready(function() {
         console.log(this);
         userChoice = $(this).attr("answeranswer");
         console.log("USER CHOICE IS: " + userChoice);
+        userAnswers.push(userChoice);
+        console.log("Here is the users answers: " + userAnswers);
         $(".stuff").empty();
         pickQuestion();
     })
@@ -98,9 +102,9 @@ $(document).ready(function() {
             answerOptionDiv = $("<div class='row answerOptionDiv'>");
             addAnswer = $("<div class='col-sm userChoice' <button>").text(questions.answers[i]);
             addAnswer.attr("answeranswer", questions.answers[i]);
-            console.log(questions.answers[i]);
+            // console.log(questions.answers[i]);
             answerArray.push(questions.answers[i]);
-            console.log(addAnswer);
+            // console.log(addAnswer);
             $(answerOptionDiv).append(addAnswer);
             $(".stuff").append(answerOptionDiv);
         }    
