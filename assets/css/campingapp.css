@@ -131,3 +131,18 @@ h4{
 }
 
 
+.stuff {
+    align-content: center;
+    margin-bottom: 100px;
+}
+
+#ready {
+    /* align-content: center; */
+    text-align: center;
+}
+
+.btn-begin {
+    text-align: center;
+    /* margin-left: 50%; */
+    /* position: center; */
+}
