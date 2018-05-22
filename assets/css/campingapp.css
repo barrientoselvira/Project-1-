@@ -115,11 +115,13 @@ h4{
  }
 
  .answerOptionDiv {
-    color: #4D504C;
+    color: #C6E881;
     font-size: 32px;
     /* margin-top: 150px; */
     font-weight: 400;
     text-align: center;
+    margin: 10px;
+  
  }
 
 

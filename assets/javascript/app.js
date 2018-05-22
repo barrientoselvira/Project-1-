@@ -127,7 +127,15 @@ $(document).ready(function() {
     }
 
         }
+
+    function showTable() {
+        
+    }
+
+
     })
+
+
 
     //NAVBAR BUTTONS TO SCROLL
     //==================================================
