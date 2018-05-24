@@ -148,3 +148,13 @@ h4{
     /* margin-left: 50%; */
     /* position: center; */
 }
+
+@media all and (max-width: 480px) { 
+ #title {
+     font-size: 72px;
+ }
+
+ #camping-background {
+     height: 600px;
+ }
+}
