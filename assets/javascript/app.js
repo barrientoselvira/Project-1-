@@ -184,6 +184,34 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response.data);  
             // finishedAnswer = response.data;
+            for(var k = 0; k < 5; k++ ){
+            // console.log("This is the finished answer: " + response.data[j].description);
+            $(".stuff").append("<p>" + "<b>" + response.data[k].fullName + "</b>" + "</p>");
+            $(".stuff").append("<p>" + response.data[k].latLong + "</p>")
+
+            var latLongArray = [];
+            var test = JSON.stringify(response.data[k].latLong);
+            var testString = test.split(', ');
+            
+            console.log(test);
+            console.log(testString);
+
+            // var lat1 = (testString[0].charAt(5))
+            // var lat2 = (testString[0].charAt(6))
+            var latitude = testString[0].split(":")[1]
+            console.log(latitude);
+            // console.log(Math.floor(latitude));
+
+            // var long1 = (testString[1].charAt(5));
+            // var long2 = (testString[1].charAt(6));
+            // var long3 = (testString[1].charAt(7));
+            // var long4 = (testString[1].charAt(8));
+            var longitude = testString[1].split(":")[1].replace("\"", "");
+            console.log(longitude);
+            // console.log(Math.floor(longitude));
+
+            }
+
             for(var j = 0; j < response.data.length; j++ ){
             console.log("This is the finished answer: " + response.data[j].description);
             $(".park-information").append("<p>" + "<b>" + response.data[j].fullName + "</b>" + "</p>");
