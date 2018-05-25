@@ -115,11 +115,13 @@ h4{
  }
 
  .answerOptionDiv {
-    color: #4D504C;
+    color: #C6E881;
     font-size: 32px;
     /* margin-top: 150px; */
     font-weight: 400;
     text-align: center;
+    margin: 10px;
+  
  }
 
 
@@ -145,4 +147,14 @@ h4{
     text-align: center;
     /* margin-left: 50%; */
     /* position: center; */
+}
+
+@media all and (max-width: 480px) { 
+ #title {
+     font-size: 72px;
+ }
+
+ #camping-background {
+     height: 600px;
+ }
 }

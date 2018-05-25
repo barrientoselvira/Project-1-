@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 
     function showMenu(){
@@ -246,4 +248,5 @@ $(document).ready(function() {
         $("html, body").animate({
             scrollTop: $(".questions-container").offset().top
         }, 800);
+
     })
