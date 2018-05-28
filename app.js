@@ -1,7 +1,50 @@
 
-$(document).ready(function() {
-    console.log("ready");
 
+var selectedOption = null;
+$(document).ready(function() {
+
+    function showMenu(){
+        $(this).hide();
+        // $("#state").selectMenu();
+        var options = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS','MO', 'MT', 'NE', 'NV', 'NH', 'NJ','NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI','WY'];
+        var createDrop = $("<select name='stateAbb' id='state'>")
+    
+        createDrop.change(function(){
+            selectedOption = $('#state>option:selected').text();
+            console.log(selectedOption);
+            $(".state-container").html('Value =' + selectedOption + ", Text = " + selectedOption);
+            var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedOption + "&fields=images&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
+            $.ajax({
+                method: "GET",
+                url: queryURL
+            }).then(function(response){
+                console.log("STATE");
+                console.log(response);
+
+            })
+        });
+
+        for(var i = 0; i < options.length; i ++){
+            var addOption = $("<option>")
+            addOption.text(options[i]);
+            console.log(options[i]);
+            console.log(addOption);
+            createDrop.append(addOption);
+            // $('options option:selected');
+            // console.log(options[i]);
+        }
+          $('#options:selected').text();
+          $(".state-container").append(createDrop);
+     };
+ 
+    //  showMenu();
+
+
+        //  $("#state").change(function(){
+        // var selectedOption = $('#state>option:selected').text();
+        // console.log(selectedOption);
+        // $(".state-container").html('Value =' + selectedOption.val() + ", Text = " + selectedOption.text);
+        //  });
 //     var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
 // $.ajax({
 //     url: queryURL,
@@ -17,28 +60,8 @@ $(document).ready(function() {
         {
             id: "state",
         question: "What state were you wanting to vist?", 
-        answers: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS','MO', 'MT', 'NE', 'NV', 'NH', 'NJ','NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI','WY'  ]
     }, 
-        {
-            id: "activity",
-        question: "What activity would you like to do?",
-        answers: ['hiking', 'swimming', 'rock climbing', 'camping', 'fishing', 'star gazing'], 
-    },
-        {
-            id: "pets",
-        question: "Do you want to bring pets?",
-        answers: ['yes', 'no'],
-        },
-        {
-            id: "group",
-        question: "Are you traveling solo or with a group of people?",
-        answers: ['solo', 'group of people'],
-        },
-        {
-            id: "terrain",
-        question: "What type of terrain are you looking for?",
-        answers: ['desert', 'mountain', 'forest'],
-        }
+
 ];
 
     //MAIN
@@ -46,8 +69,11 @@ $(document).ready(function() {
 
     $(".btn-begin").click(function() {
         $(this).hide();
+        $(ready).hide();
         console.log("clicked")
         questionsStart();
+        showMenu();
+
     });
 
     function questionsStart()
@@ -65,6 +91,7 @@ $(document).ready(function() {
     var answerOptionDiv;
     var addAnswer;
     var finishedAnswer;
+    var stateDropDiv;
     
 
     pickQuestion();
@@ -94,6 +121,7 @@ $(document).ready(function() {
      //FUNCTIONS
     //=================================================
 
+    
     //FUNCTION TO PICK A QUESTION
     function pickQuestion() {
         console.log("THIS IS # ANSWERED: " + answeredQuestionsArray.length);
@@ -116,7 +144,11 @@ $(document).ready(function() {
         showAnswers();
         } else(displayInfo());
         
-        
+    //FUNCTION FOR DROPDOWN MENU
+  
+
+
+
     
     //FUNCTION TO DISPLAY PARK INFO
     function displayInfo() {
@@ -129,25 +161,79 @@ $(document).ready(function() {
             }
         }
 
+    //     var queryURL2 = "http://www.astropical.space/astrodb/api-ephem.php?lat=35&lon=139";
+    //    $.ajax({
+    //        url: queryURL2,
+    //        method: "GET"
+    //      }).then(function(response2) {
+    //          createPlanetTable();
+    //          console.log(JSON.parse(response2));
+    //          var data2 = JSON.parse(response2);
+           
+    //          for (var i=0; i < data2.response.length; i++) {
+    //              console.log(data2.response[i].name, data2.response[i].const, data2.response[i].au_earth);
 
-        var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&fields=images&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
+    //              var tBody = $("tbody");
+    //              var tRow = $("<tr>");
+
+    //              var planetNameTd = $("<td>").text(data2.response[i].name);
+    //              var constellationNameTd = $("<td>").text(data2.response[i].const);
+    //              var distance = $("<td>").text(data2.response[i].au_earth);
+
+    //              tRow.append(planetNameTd, constellationNameTd, distance);
+    //              tBody.append(tRow);
+    //          }
+         
+    //      });
+
+
+        var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedOption + "&fields=images&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+            console.log("STATE");
             console.log(response.data);  
             // finishedAnswer = response.data;
+            for(var k = 0; k < 5; k++ ){
+            // console.log("This is the finished answer: " + response.data[j].description);
+            $(".stuff").append("<p>" + "<b>" + response.data[k].fullName + "</b>" + "</p>");
+            $(".stuff").append("<p>" + response.data[k].latLong + "</p>")
+
+            var latLongArray = [];
+            var test = JSON.stringify(response.data[k].latLong);
+            var testString = test.split(', ');
+            
+            console.log(test);
+            console.log(testString);
+
+            // var lat1 = (testString[0].charAt(5))
+            // var lat2 = (testString[0].charAt(6))
+            var latitude = testString[0].split(":")[1]
+            console.log(latitude);
+            // console.log(Math.floor(latitude));
+
+            // var long1 = (testString[1].charAt(5));
+            // var long2 = (testString[1].charAt(6));
+            // var long3 = (testString[1].charAt(7));
+            // var long4 = (testString[1].charAt(8));
+            var longitude = testString[1].split(":")[1].replace("\"", "");
+            console.log(longitude);
+            // console.log(Math.floor(longitude));
+
+            }
+
             for(var j = 0; j < response.data.length; j++ ){
             console.log("This is the finished answer: " + response.data[j].description);
-            $(".stuff").append("<p>" + "<b>" + response.data[j].fullName + "</b>" + "</p>");
-            $(".stuff").append("<p>" + response.data[j].states + "</p>");
+            $(".park-information").append("<p>" + "<b>" + response.data[j].fullName + "</b>" + "</p>");
+            $(".park-information").append("<p>" + response.data[j].states + "</p>");
             if(response.data[j].images[0]){
                 var imgURL = response.data[j].images[0].url;
                 var image = $("<img>").attr("src", imgURL);
-                $(".stuff").append(image);
+                $(".park-information").append(image);
             }
-            $(".stuff").append("<p>" + response.data[j].description + "</p>");
-            $(".stuff").append("<p>" + response.data[j].weatherInfo + "</p>");
+            $(".park-information").append("<p>" + response.data[j].description + "</p>");
+            $(".park-information").append("<p>" + response.data[j].weatherInfo + "</p>");
             }
             });
 
@@ -155,22 +241,30 @@ $(document).ready(function() {
         // $(".stuff").append(finishedAnswer);
     }}
 
+    //CREATES TABLE
+   function createPlanetTable() {
+    planetTable = $("<div class='card card-primary'><div class='card-heading'><h3 class='card-title'><strong>PLANETS</strong></h3></div><div class='card-body'><table class='table table-hover' id='planetInfo'><thead><tr><th>Planet Name</th><th>Constellation Name</th><th>Distance</th></tr></thead><tbody></tbody></table></div></div>")
+    $(".park-information").append(planetTable);
+}
+
     function showAnswers() {
         answerDiv = $("<div>");
         $(".stuff").append(answerDiv);
-        for(var i = 0; i < questions.answers.length; i++){
+        for(var i = 0; i < questions.length; i++){
             //Add Answer Div to HTML
             answerOptionDiv = $("<div class='row answerOptionDiv'>");
             addAnswer = $("<div class='col-sm userChoice' <button>").text(questions.answers[i]);
             addAnswer.attr("answeranswer", questions.answers[i]);
             // console.log(questions.answers[i]);
             answerArray.push(questions.answers[i]);
+          
             // console.log(addAnswer);
             $(answerOptionDiv).append(addAnswer);
             $(".stuff").append(answerOptionDiv);
         }    
     }
 
+    
         // .append(="<img src=" + );
         }
     })
@@ -193,6 +287,5 @@ $(document).ready(function() {
         $("html, body").animate({
             scrollTop: $(".questions-container").offset().top
         }, 800);
-    })
 
-    
+    })
