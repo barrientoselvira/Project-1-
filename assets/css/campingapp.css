@@ -1,160 +1,222 @@
-
 /* Navbar */
 .top-nav {
     height: 70px;
     padding: 20px;
-}
-
-a {
+   }
+   
+   a {
     font-size: 14px;
     color: #665050;
-}
-
-a:hover {
+   }
+   
+   a:hover {
     font-size: 16px;
     color: black;
     text-decoration: line-through;
-}
-
-a:active {
+   }
+   
+   a:active {
     font-size: 16px;
     color: #22CD13;
-}
-
-/* Header */
-#camping-background {
+   }
+   
+   /* Header */
+   #camping-background {
     right: 0;
     left: 0;
     width: 100%;
     height: 700px;
     position: absolute;
-
-} 
-
-.header { 
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      overflow: hidden;
-} 
-
-#title {
+   
+   } 
+   
+   .header { 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+   } 
+   
+   #title {
     color: #393333;
     text-align: center;
     font-size: 115px;
     margin-top: 150px;
-}
-
-#lead-in {
+   }
+   
+   #lead-in {
     margin-top:70px;
     text-align: center;
     color: white;
     position: relative;
     font-family: 'Maven Pro', sans-serif;
     font-weight: lighter;
-
-}
-
-
-/* About */
-.icon {
+   
+   }
+   
+   
+   /* About */
+   .icon {
     width: 70px;
     height: 70px;
     margin-bottom: 40px;
-
-}
-
-h4{
+   
+   }
+   
+   h4{
     font-size: 42px;
     padding: 40px;
     margin-bottom: 70px;
-}
-
-.steps {
+   }
+   
+   .steps {
     margin-bottom: 40px;
-}
-
-/* Start */
-
-#ready {
+   }
+   
+   /* Start */
+   
+   #ready {
     font-size: 24px; 
     margin-top: 250px;
-}
-
-
-.btn-begin {
+   }
+   
+   
+   .btn-begin {
     border: 2px solid greenyellow;
     border-radius: 0;
     height: 50px;
     width: 120px;
     margin-top: 30px;
     margin-bottom: 200px;
-}
-
-.btn-begin:hover {
+   }
+   
+   .btn-begin:hover {
     background-color: #393333;
-}
-
-
-/* Footer */
-.about-container {
+   }
+   
+   .parkButton {
+    border: 2px solid greenyellow;
+    border-radius: 0;
+    background: white;
+    cursor: pointer;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+   }
+   
+   .parkButton:hover {
+    background-color: #393333;
+    color: white;
+   }
+   
+   #state {
+    cursor: pointer;
+    border: solid greenyellow;
+    border-radius: 0;
+   
+   }
+   
+   #options:selected {
+    cursor: pointer;
+   }
+   
+   .state-container {
+    cursor: pointer;
+   }
+   
+   /* Footer */
+   .about-container {
     color: black;
     margin-top: 400px;
     text-align: center;
-}
-
-/*JavaScript */
-/*Question Div */
- .questionClass {
+   }
+   
+   /*JavaScript */
+   /*Question Div */
+    .questionClass {
     color: #4D504C;
     text-align: center;
     font-size: 32px;
     margin-top: 150px;
     font-weight: 400;
- }
-
- .answerOptionDiv {
+    }
+   
+    .answerOptionDiv {
     color: #C6E881;
     font-size: 32px;
     /* margin-top: 150px; */
     font-weight: 400;
     text-align: center;
     margin: 10px;
-  
- }
-
-
-
-/* Footer */
-.footer {
+    
+    }
+   
+   
+   
+   /* Footer */
+   .footer {
     color: black; 
     width: 100%;
-}
-
-
-.stuff {
+   }
+   
+   
+   .stuff {
     align-content: center;
+    margin-bottom: 50px;
+    text-align: center;
+   }
+   
+   #ready {
+    text-align: center;
+   }
+   
+   .btn-begin {
+    text-align: center;
+   }
+   
+   .finalImage {
+    height: 422px;
+    width: 690px;
+   }
+   
+   .starInfo {
+    width: 690px;
+    text-align: center;
+   }
+   
+   .starTable {
+    width: 100%;
+    text-align: center;
     margin-bottom: 100px;
-}
-
-#ready {
-    /* align-content: center; */
-    text-align: center;
-}
-
-.btn-begin {
-    text-align: center;
-    /* margin-left: 50%; */
-    /* position: center; */
-}
-
-@media all and (max-width: 480px) { 
- #title {
-     font-size: 72px;
- }
-
- #camping-background {
-     height: 600px;
- }
-}
+   }
+   
+   h2 {
+    font-size: 40px;
+   }
+   
+   .map {
+    height: 400px;
+    width: 100%;
+   }
+   
+   .skyLink {
+    font-size: 50px;
+    color: #665050;
+   }
+   
+   .skyLink:hover {
+    font-size: 75px;
+    color: rgb(36, 141, 202);
+    text-decoration: none;
+   }
+   
+   @media all and (max-width: 480px) { 
+    #title {
+    font-size: 72px;
+    }
+   
+    #camping-background {
+    height: 600px;
+    }
+   }
