@@ -190,7 +190,7 @@ $(document).ready(function() {
     
     console.log(lat);
     console.log(long);
-    var queryURL2 = "https://www.astropical.space/astrodb/api-ephem.php?lat=" + lat + "&lon=" + long + "";
+    var queryURL2 = "https://cors-everywhere.herokuapp.com/http://www.astropical.space/astrodb/api-ephem.php?lat=" + lat + "&lon=" + long + "";
     console.log(queryURL2);
     $.ajax({
     url: queryURL2,
