@@ -193,7 +193,7 @@ $(document).ready(function() {
  
  console.log(lat);
  console.log(long);
- var queryURL2 = "http://www.astropical.space/astrodb/api-ephem.php?lat=" + lat + "&lon=" + long + "";
+ var queryURL2 = "https://www.astropical.space/astrodb/api-ephem.php?lat=" + lat + "&lon=" + long + "";
  console.log(queryURL2);
  $.ajax({
  url: queryURL2,
@@ -230,7 +230,7 @@ $(document).ready(function() {
  //createMap(obj,id);
  }
 
- var linkURL = "http://www.fourmilab.ch/cgi-bin/Yoursky?z=1&lat=" + lat + "&ns=North&lon=" + long + "&ew=West"
+ var linkURL = "https://www.fourmilab.ch/cgi-bin/Yoursky?z=1&lat=" + lat + "&ns=North&lon=" + long + "&ew=West"
  var link = $("<a href=" + linkURL + " target=_blank class=skyLink>SEE YOUR SKY</a>")
  var table = $("<table class='starTable'><thead><br><th>" + 'Planet Name' + "</th><th>" + 'Constellation Name' + "</th><th>" + 'Distance (AU)' + "</th></thead><tbody></tbody></table>")
  var tHead = $("tHead");
