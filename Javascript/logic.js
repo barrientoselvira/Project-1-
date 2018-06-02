@@ -1,5 +1,4 @@
 
-
 $(document).ready(function() {
     console.log("ready");
 
@@ -224,5 +223,3 @@ $(document).ready(function() {
             scrollTop: $(".questions-container").offset().top
         }, 800);
     })
-
-    
