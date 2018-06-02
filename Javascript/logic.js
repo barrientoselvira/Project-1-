@@ -223,5 +223,3 @@ $(document).ready(function() {
             scrollTop: $(".questions-container").offset().top
         }, 800);
     })
-
-    

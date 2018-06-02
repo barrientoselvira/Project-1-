@@ -84,7 +84,9 @@ h4{
 #ready {
     font-size: 24px; 
     margin-top: 250px;
+    margin-bottom: 50px;
 }
+
 
 
 .btn-begin {
@@ -235,7 +237,56 @@ h2 {
     font-size: 55px;
     text-decoration: none;
     color: white;
+
 }
+
+
+.finalImage {
+    height: 422px;
+    width: 690px;
+    /* margin-bottom: 20px; */
+}
+
+.starInfo {
+    width: 690px;
+    text-align: center;
+    background-image: url("https://cdn.pixabay.com/photo/2016/06/05/07/59/stars-1436950_960_720.jpg")
+}
+
+.starTable {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 100px;
+    color: #665050;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 5%;
+    border-bottom: #22CD13;
+}
+
+.map {
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.skyLink {
+    font-size: 50px;
+    color: rgb(36, 141, 202);
+}
+
+
+.skyLink:hover {
+    font-size: 55px;
+    text-decoration: none;
+    color: white;
+}
+
+.starTable {
+    color: white;
+} 
 
 @media all and (max-width: 480px) { 
  #title {
@@ -246,3 +297,55 @@ h2 {
      height: 600px;
  }
 }
+
+/* .parkButton {
+    border: 1px solid greenyellow;
+    padding: 1%;
+    margin: 10px;
+    }
+    
+h2 {
+    margin: 5%;
+}
+
+.parkButton:hover {
+    border: 1px solid black;
+    color: white;
+    background-color: #393333;
+}
+
+
+h5 {
+    margin-left: 20% !important;
+    margin-right: 20% !important;
+    width: 60%;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 5%;
+    color: #393333;
+}
+
+.stuff {
+    margin-top: 50px;
+    align-content: center;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+#state {
+    margin-left: 45%;
+    margin-right: 50%;
+    background-color: greenyellow;
+}
+
+.stateId {
+    background-color: greenyellow;
+}
+
+p {
+    line-height: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+*/
+

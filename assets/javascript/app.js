@@ -10,13 +10,13 @@ $(document).ready(function() {
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
     // If element is scrolled into view, fade it in
-    
     window.sr = ScrollReveal();
     sr.reveal('.new-section');
     sr.reveal('icon');
     sr.reveal('.steps');
     sr.reveal('#ready');
     sr.reveal('.btn');
+
     });
    
    var selectedOption = null;
@@ -66,10 +66,11 @@ $(document).ready(function() {
     //MAIN
     //=================================================
     $(".btn-begin").click(function() {
-    $(this).hide();
-    $(ready).hide();
-    console.log("clicked")
-    showMenu();
+        $(this).hide();
+        $(this).addClass("zoomOutUp");
+        $(ready).hide();
+        console.log("clicked")
+        showMenu();
     });
    
     
@@ -98,34 +99,35 @@ $(document).ready(function() {
     //FUNCTION TO DISPLAY PARK INFO
     function displayInfo() {
     
-    var state = "";
-   
-    var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedOption + "&fields=images&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
-    $.ajax({
-    url: queryURL,
-    method: "GET"
-    }).then(function(response) {
-    console.log(response.data); 
+        var state = "";
     
-    var dataArray = [];
+        var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + selectedOption + "&fields=images&api_key=Hx0htuWoqYoNtx7Zr0h8tB9mDyAeiRNgBfEwRavS";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+        console.log(response.data); 
+        
+        var dataArray = [];
+        
+        for (var k = 0; k < response.data.length; k++) {
+        console.log(response.data[k])
+        dataArray.push(response.data[k]);
+        console.log(dataArray);
+        latLongResponse = response.data[k].latLong
     
-    for (var k = 0; k < response.data.length; k++) {
-    console.log(response.data[k])
-    dataArray.push(response.data[k]);
-    console.log(dataArray);
-    latLongResponse = response.data[k].latLong
-   
-    var createName = $("<button class='parkButton'>");
-    createName.text(response.data[k].name);
-    createName.attr("data-name", response.data[k].name);
-    createName.attr("data-description", response.data[k].description);
-    createName.attr("data-latLong", response.data[k].latLong);
-    if(response.data[k].images[0]) {
-    createName.attr("data-image", response.data[k].images[0].url);
-    }
-    $(".stuff").append(createName);
-   
-    
+        var createName = $("<button class='parkButton'>");
+        createName.text(response.data[k].name);
+        createName.attr("data-name", response.data[k].name);
+        createName.attr("data-description", response.data[k].description);
+        createName.attr("data-latLong", response.data[k].latLong);
+        if(response.data[k].images[0]) {
+        createName.attr("data-image", response.data[k].images[0].url);
+        }
+        if (latLongResponse) {
+            $(".stuff").append(createName);
+        }
+ 
     }
    
     for (var z = 0; z < dataArray.length; z++) {
@@ -157,9 +159,9 @@ $(document).ready(function() {
     $(".park-information").append("<p>" + "<b>" + response.data[j].fullName + "</b>" + "</p>");
     $(".park-information").append("<p>" + response.data[j].states + "</p>");
     if(response.data[j].images[0]){
-    var imgURL = response.data[j].images[0].url;
-    var image = $("<img>").attr("src", imgURL);
-    $(".park-information").append(image);
+        var imgURL = response.data[j].images[0].url;
+        var image = $("<img>").attr("src", imgURL);
+        $(".park-information").append(image);
     }
     $(".park-information").append("<p>" + response.data[j].description + "</p>");
     $(".park-information").append("<p>" + response.data[j].weatherInfo + "</p>");
@@ -172,7 +174,7 @@ $(document).ready(function() {
     $(".stuff").empty();
    
     var finalTitle = $("<h2>").text(choiceObj.name);
-    var finalImage = $("<img class='finalImage' src=" + choiceObj.image + ">")
+    var finalImage = $("<img class='finalImage animated bounceInLeft' src=" + choiceObj.image + ">")
     var finalDescription = $("<h5>").text(choiceObj.description);
     var latLongResponse = choiceObj.latLong;
    
@@ -184,7 +186,9 @@ $(document).ready(function() {
     var long = parseFloat(vars[1].split(":")[1]);
    
     $(".stuff").append(finalTitle);
-    $(".stuff").append(finalImage);
+    if (choiceObj.image !== undefined) {
+        $(".stuff").append(finalImage);
+    }
     $(".stuff").append(finalDescription);
    
     
@@ -193,38 +197,38 @@ $(document).ready(function() {
     var queryURL2 = "https://cors-everywhere.herokuapp.com/http://www.astropical.space/astrodb/api-ephem.php?lat=" + lat + "&lon=" + long + "";
     console.log(queryURL2);
     $.ajax({
-    url: queryURL2,
-    method: "GET"
-    }).then(function(response2) {
-   
-    $(".starInfo").empty();
-    $(".map").hide();
-   
-    console.log(lat);
-    console.log(long);
-   
-    console.log(JSON.parse(response2));
-    var data2 = JSON.parse(response2);
-   
-   
+        url: queryURL2,
+        method: "GET"
+        }).then(function(response2) {
     
-    var latLongResponse = choiceObj.latLong;
-    console.log(latLongResponse);
-    if(latLongResponse !== undefined && !!latLong){
-    var vars = latLongResponse.split(",");
-    var lat = parseFloat(vars[0].split(":")[1]);
-    var long = parseFloat(vars[1].split(":")[1]);
-    var obj = {
-    lat: lat,
-    lng: long
-    };
-    var id= "Map" + Math.floor(Math.random()*10000);
-    console.log(id);
-    console.log(obj);
-    $(".stuff").append("<p class='map' id='"+id+"'></p>");
-    google.maps.event.addDomListener(window, "load", createMap(obj, id));
+        $(".starInfo").empty();
+        $(".map").hide();
     
-    }
+        console.log(lat);
+        console.log(long);
+    
+        console.log(JSON.parse(response2));
+        var data2 = JSON.parse(response2);
+    
+    
+        
+        var latLongResponse = choiceObj.latLong;
+        console.log(latLongResponse);
+        if(latLongResponse !== undefined && !!latLong){
+            var vars = latLongResponse.split(",");
+            var lat = parseFloat(vars[0].split(":")[1]);
+            var long = parseFloat(vars[1].split(":")[1]);
+            var obj = {
+            lat: lat,
+            lng: long
+            };
+            var id= "Map" + Math.floor(Math.random()*10000);
+            console.log(id);
+            console.log(obj);
+            $(".stuff").append("<p class='map' id='"+id+"'></p>");
+            google.maps.event.addDomListener(window, "load", createMap(obj, id));
+            
+        }
    
     var linkURL = "https://www.fourmilab.ch/cgi-bin/Yoursky?z=1&lat=" + lat + "&ns=North&lon=" + long + "&ew=West"
     var link = $("<a href=" + linkURL + " target=_blank class=skyLink>SEE YOUR SKY</a>")
@@ -250,6 +254,7 @@ $(document).ready(function() {
 
     $(".starInfo").append(table);
     }
+      
     window.sr = ScrollReveal();
     sr.reveal('h2');
     sr.reveal('.finalImage');
@@ -261,39 +266,41 @@ $(document).ready(function() {
     //CREATE MAP
     function createMap(obj, id){
 
-    var map = new google.maps.Map(document.getElementById(id), {
-    center: obj,
-    zoom: 9
-    });
+
+        var map = new google.maps.Map(document.getElementById(id), {
+        center: obj,
+        zoom: 9
+        });
+    
+        // create a marker
+        var marker = new google.maps.Marker({
+        position: obj,
+        map:map,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+        });
+        console.log("working");
    
-    // create a marker
-    var marker = new google.maps.Marker({
-    position: obj,
-    map:map,
-    mapTypeId: google.maps.MapTypeId.TERRAIN
-    });
-    console.log("working");
- 
     }
     function initMap() {
     }
    
     //CAPTURE ANSWER SELECTED BY USER AND SHOW NEXT QUESTION
     $("body").on("click", ".parkButton", function(){
-    console.log(this);
-    userChoice = $(this).text();
-    console.log("USER CHOICE IS: " + userChoice);
-    choiceObj = {
-    name: $(this).attr("data-name"),
-    description: $(this).attr("data-description"),
-    image: $(this).attr("data-image"),
-    latLong: $(this).attr("data-latLong")
+        console.log(this);
+        userChoice = $(this).text();
+        console.log("USER CHOICE IS: " + userChoice);
+        choiceObj = {
+            name: $(this).attr("data-name"),
+            description: $(this).attr("data-description"),
+            image: $(this).attr("data-image"),
+            latLong: $(this).attr("data-latLong")
     };
     
 
-    console.log(choiceObj);
+        console.log(choiceObj);
 
-    finalDisplay();
+        finalDisplay();
+ 
     
     });
     
