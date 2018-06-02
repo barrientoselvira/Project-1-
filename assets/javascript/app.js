@@ -70,6 +70,8 @@ $(document).ready(function() {
         $(this).addClass("zoomOutUp");
         $(ready).hide();
         console.log("clicked")
+        var state = $("<p>").text("Select a state")
+        $(".state-container").prepend(state);
         showMenu();
     });
    
