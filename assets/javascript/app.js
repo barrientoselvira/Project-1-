@@ -10,13 +10,13 @@ $(document).ready(function() {
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
     // If element is scrolled into view, fade it in
-    $(window).scroll(function() {
-    $('.scroll-animations .animated').each(function() {
-    if (isScrolledIntoView(this) === true) {
-    $(this).addClass('fadeInLeft');
-    }
-    });
-    });
+    
+    window.sr = ScrollReveal();
+    sr.reveal('.new-section');
+    sr.reveal('icon');
+    sr.reveal('.steps');
+    sr.reveal('#ready');
+    sr.reveal('.btn');
     });
    
    var selectedOption = null;
@@ -250,7 +250,11 @@ $(document).ready(function() {
 
     $(".starInfo").append(table);
     }
-    
+    window.sr = ScrollReveal();
+    sr.reveal('h2');
+    sr.reveal('.finalImage');
+    sr.reveal('h5');
+        
     });
     }
    
