@@ -2,7 +2,7 @@
 
 Luis Gutierrez
 
-Josh
+Joshua Trimble
 
 Elvira Barrientos
 
